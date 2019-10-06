@@ -126,4 +126,9 @@ RCT_REMAP_METHOD(data,
     }
 }
 
++ (BOOL)requiresMainQueueSetup
+{
+  return NO;
+}
+
 @end
