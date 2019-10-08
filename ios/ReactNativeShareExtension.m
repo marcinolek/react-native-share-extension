@@ -123,9 +123,8 @@ RCT_REMAP_METHOD(data,
             }];
         } else if (imageProvider) {
             [imageProvider loadItemForTypeIdentifier:IMAGE_IDENTIFIER options:nil completionHandler:^(id<NSSecureCoding> item, NSError *error) {
-                    NSURL* url = (NSURL *)item;
-                
-                DataItem *dataItem = [DataItem itemWithContentType:[fullPath pathExtension] value:fullPath exception:nil];
+                NSURL* url = (NSURL *)item;
+                DataItem *dataItem = [DataItem itemWithContentType:[[[url absoluteString] pathExtension] lowercaseString] value:[url absoluteString]] exception:nil];
                 [results addObject:dataItem];
                 if(results.count == itemsCount) {
                     processResults(results);
